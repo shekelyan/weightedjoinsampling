@@ -1,0 +1,49 @@
+{
+	"tables":{
+		
+		"author":{
+			"csvfile":		"data/dblp/author.csv",
+			"csvheader":	true,
+			"csvdebug": 	false,
+			"csvcomma":	",",
+			"csvcolumns": 	"a_a,a_name"
+		},
+		
+		"authored":{
+			"csvfile":		"data/dblp/authored.csv",
+			"csvheader":	true,
+			"csvdebug": 	false,
+			"csvcomma":	",",
+			"csvcolumns": 	"t_p,t_a"
+		},
+		
+		"citation":{
+			"csvfile":		"data/dblp/citation.csv",
+			"csvheader":	true,
+			"csvdebug": 	false,
+			"csvcomma":		",",
+			"csvcolumns": 	"c_psrc,c_pdst"
+		},
+		
+		"paper":{
+			"csvfile":		"data/dblp/paper.csv",
+			"csvheader":	true,
+			"csvdebug": 	false,
+			"csvcomma":		",",
+			"csvcolumns": 	"p_p,p_name,p_v,p_y"
+		},
+		
+		"venue":{
+			"csvfile":		"data/dblp/venue.csv",
+			"csvheader":	true,
+			"csvdebug": 	false,
+			"csvcomma":		",",
+			"csvcolumns": 	"v_v,v_name"
+		}
+	},
+	
+	"views":{
+		"wqc": "SELECT p1.p_p as p, p2.p_y as y, a.a_name as a FROM citation c, paper p1, paper p2, venue v WHERE c.c_psrc = p2.p_p AND c.c_pdst = p1.p_p AND v.v_v = p1.p_v;",
+		"wqsc": "SELECT p1.p_p as p, p2.p_y as y, a.a_name as a FROM citation c, paper p1, paper p2, authored t1, authored t2 WHERE c.c_psrc = p2.p_p AND c.c_pdst = p1.p_p AND t1.t_p = c.c_psrc AND t2.t_p = c.c_pdst AND t1.t_a = t2.t_a;"
+	}
+}

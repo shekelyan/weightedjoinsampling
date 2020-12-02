@@ -1,0 +1,54 @@
+{
+	"tables":{
+		
+		"nation":{
+			"csvfile":		"data/tpch/${scalefactor}x/nation.tbl",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"|",
+			"csvcolumns": 	"n_nationkey, n_name, n_regionkey, n_comment"
+		},
+		
+		"customer":{
+			"csvfile":		"data/tpch/${scalefactor}x/customer.tbl",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"|",
+			"csvcolumns": 	"c_custkey, c_name, c_address, c_nationkey,c_phone,c_acctbal"
+		},
+		"supplier":{
+			"csvfile":		"data/tpch/${scalefactor}x/supplier.tbl",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"|",
+			"csvcolumns": 	"s_suppkey, s_name, s_address, s_nationkey, s_phone, s_acctbal, s_comment"
+		},
+		"lineitem":{
+			"csvfile":		"data/tpch/${scalefactor}x/lineitem_skew.tbl",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"|",
+			"csvcolumns": 	"l_orderkey, l_partkey, l_suppkey, l_linenumber, l_quantity, l_extendedprice"
+			
+		},
+		"orders":{
+			"csvfile":			"data/tpch/${scalefactor}x/orders.tbl",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"|",
+			"csvcolumns": 	"o_orderkey, o_custkey, o_status, o_totalprice"
+		}
+
+	},
+	
+	"views":{
+		"q3": "SELECT c_custkey as c, o_orderkey as o, l_linenumber as l FROM customer cu, orders or, lineitem li WHERE c_custkey = o_custkey AND l_orderkey = o_orderkey;",
+		"wq3": "SELECT o_totalprice as t, l_extendedprice as e, l_discount as d, c_custkey as c, o_orderkey as o, l_linenumber as l FROM customer cu, orders or, lineitem li WHERE c_custkey = o_custkey AND l_orderkey = o_orderkey;",
+		"qx": "SELECT n_nationkey as n, s_suppkey as s, c_custkey as c, o_orderkey as o, l_linenumber as l, l_quantity as q, l_extendedprice as e FROM nation nat, supplier sup, customer cus, orders ord, lineitem lin WHERE s_nationkey =n_nationkey AND s_nationkey = c_nationkey AND c_custkey = o_custkey AND o_orderkey = l_orderkey;",
+		"wqx": "SELECT o_totalprice as t,l_extendedprice as e,l_discount as d,n_nationkey as n, s_suppkey as s, c_custkey as c, o_orderkey as o, l_linenumber as l FROM nation nat, supplier sup, customer cus, orders ord, lineitem lin WHERE s_nationkey =n_nationkey AND s_nationkey = c_nationkey AND c_custkey = o_custkey AND o_orderkey = l_orderkey;",
+"n": "SELECT n_nationkey as n, s_suppkey as s FROM nation nat, supplier sup WHERE s_nationkey = n_nationkey;",
+		"qy": "SELECT l1.l_linenumber as l, o1.o_orderkey as o, c1.c_custkey as c , l2.l_linenumber as l2, o2.o_orderkey as o2, s_suppkey as s, c2.c_custkey as c2, l2.l_partkey as p, c1.c_nationkey as n1, c2.c_nationkey as n2,  FROM lineitem l1, orders o1, customer c1, lineitem l2, orders o2, customer c2, supplier s WHERE l1.l_orderkey = o1.o_orderkey AND o1.o_custkey = c1.c_custkey AND l1.l_partkey = l2.l_partkey AND l2.l_orderkey = o2.o_orderkey AND o2.o_custkey = c2.c_custkey AND c1.c_nationkey = s.s_nationkey AND s.s_nationkey = c2.c_nationkey;",
+		"wqy": "SELECT o1.o_totalprice as t1,o2.o_totalprice as t2, l1.l_extendedprice as e1, l2.l_extendedprice as e2, l1.l_discount as d1, l2.l_discount as d2, l1.l_linenumber as l, o1.o_orderkey as o, c1.c_custkey as c , l2.l_linenumber as l2, o2.o_orderkey as o2, s_suppkey as s, c2.c_custkey as c2, l2.l_partkey as p, c1.c_nationkey as n1, c2.c_nationkey as n2 FROM lineitem l1, orders o1, customer c1, lineitem l2, orders o2, customer c2, supplier s WHERE l1.l_orderkey = o1.o_orderkey AND o1.o_custkey = c1.c_custkey AND l1.l_partkey = l2.l_partkey AND l2.l_orderkey = o2.o_orderkey AND o2.o_custkey = c2.c_custkey AND c1.c_nationkey = s.s_nationkey AND s.s_nationkey = c2.c_nationkey;"
+		
+	}
+}

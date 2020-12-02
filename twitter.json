@@ -1,0 +1,51 @@
+{
+	"tables":{
+		
+		"p":{
+			"csvfile":		"data/twitter/${scalefactor}x/celebrities_profiles.txt",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"\t",
+			"csvcolumns": 	"numeric_id,verified,profile_sidebar_fill_color,profile_text_color,followers_count,protected,location,profile_background_color,utc_offset,statuses_count,description,friends_count,profile_link_color,profile_image_url,notifications,profile_background_image_url,screen_name,profile_background_tile,favourites_count,name,url,created-at,time_zone,profile_sidebar_border_color,following,gender"
+		},
+		
+		"a":{
+			"csvfile":		"data/twitter/${scalefactor}x/1_50x.txt",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"\t",
+			"csvcolumns": 	"a_src,a_dst"
+		},
+		
+		"b":{
+			"csvfile":		"data/twitter/${scalefactor}x/2_50x.txt",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"\t",
+			"csvcolumns": 	"b_src,b_dst"
+		},
+		
+		"c":{
+			"csvfile":		"data/twitter/${scalefactor}x/2_50x.txt",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"\t",
+			"csvcolumns": 	"c_src,c_dst"
+		},
+		
+		"d":{
+			"csvfile":		"data/twitter/${scalefactor}x/2_50x.txt",
+			"csvheader":	false,
+			"csvdebug": 	false,
+			"csvcomma":		"\t",
+			"csvcolumns": 	"d_src,d_dst"
+		}
+	},
+	
+	"views":{
+		
+		"qt": "SELECT a_src as a1, a_dst a2, b_src as b1, c_dst as b2, c_src as c1, c_dst as c2 FROM a a, b b, c c WHERE a_dst = b_src AND b_dst = c_src AND c_dst = a_src;",
+		"qf": "SELECT a_src as a1, a_dst a2, b_src as b1, c_dst as b2, c_src as c1, c_dst as c2, d_src as d1, d_dst as d2 FROM a a, b b, c c, d d WHERE a_src = b_src AND c_dst = a_src AND c_src = d_dst;",
+		"qs": "SELECT a_src as a1, a_dst a2, b_src as b1, c_dst as b2, c_src as c1, c_dst as c2, d_src as d1, d_dst as d2 FROM a a, b b, c c, d d WHERE a_dst = b_src AND b_dst = c_src AND c_dst = d_src AND d_dst = a_src;"
+	}
+}
