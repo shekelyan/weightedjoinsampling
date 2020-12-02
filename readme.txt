@@ -1,4 +1,4 @@
-Note: We use for experiments a dedicated machine with an Intel(R) Xeon(R) W-2145 CPU @ 3.70GHz with 16 cores and 512GB RAM, but only a single core is used.
+Note: We use for experiments a dedicated machine using Ubuntu 18.04.4 LTS, an Intel(R) Xeon(R) W-2145 CPU @ 3.70GHz with 16 cores and 512GB RAM, but only a single core is used. The code is compiled using GCC 7.5.0 with the compiler flags "-O3" and "-std=c++11".
 
 1.) PREPARE THE DATASETS
 
