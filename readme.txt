@@ -1,4 +1,4 @@
-Note: We use for experiments a dedicated machine using Ubuntu 18.04.4 LTS, an Intel(R) Xeon(R) W-2145 CPU @ 3.70GHz with 16 cores and 512GB RAM, but only a single core is used. The code is compiled using GCC 7.5.0 with the compiler flags "-O3" and "-std=c++11".
+Note: We use for experiments a dedicated machine using Ubuntu 18.04.4 LTS, an Intel(R) Xeon(R) W-2145 CPU @ 3.70GHz with 16 cores and 512GB RAM, but only a single core is used. The code is written in C++11 and compiled using GCC 7.5.0 with the compiler flags "-O3" and "-std=c++11".
 
 1.) PREPARE THE DATASETS
 
@@ -36,10 +36,9 @@ bin/joinsampling "SELECT * from QY WEIGHTED BY ((e1*(1-d1))*t1*(e2*(1-d2))*t2) L
 
 Alternative parameters in the SQL comments:
 
-"fk=10" will activate the foreign-key economic sampler
+"fk=10" will activate the foreign-key economic sampler with a 10x larger uniform sample
 "hash=1" will activate the acyclic economic sampler
 "simplify=1" will activate the cyclic economic sampler
 "inversion=1" will active the inversion sampler
-"ks=1" choose to perform a K-S-test on the sample
+"ks=1" chooses to perform a K-S-test on the sample
 "write=output.txt" chooses to write the sample to "output.txt"
-
