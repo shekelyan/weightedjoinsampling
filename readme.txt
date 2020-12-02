@@ -1,3 +1,5 @@
+Note: We use for experiments a dedicated machine with an Intel(R) Xeon(R) W-2145 CPU @ 3.70GHz with 16 cores and 512GB RAM, but only a single core is used.
+
 1.) PREPARE THE DATASETS
 
 TPC-H: The TPC-H benchmark can be downloaded from http://tpc.org and has to be run to generate the csv files.
@@ -6,11 +8,19 @@ TWITTER: The twitter dataset can be obtained from http://arnetminer.org/citation
 
 2.) MODIFY THE DATABASE FILES
 
-The ".json" files in the main folder reveal how the data should be named and where everything should be placed.
+Each "database" and its schema are defined in a database file using JSON. Currently only files are supports as data sources, but ODBC support is essentially in the code and will be added shortly.
+
+The ".json" files in the main folder reveal how the data should be named and where everything should be placed:
+
+In the folder "data/dblp": citation.csv, paper.csv, author.csv, authored.csv
+In the folder  "data/tpch/1X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
+In the folder  "data/tpch/10X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
+In the folder  "data/tpch/100X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
+In the folder  "data/twitter": 1_50x.txt, 2_50x.txt, celebrities_profiles.txt
 
 3.) COMPILE THE CODE
 
-Execute "make joinsampling" from the directory where the "Makefile"-file is located.
+Execute "make joinsampling" from the main directory (where the "Makefile"-file is located)
 
 4.) EXECUTE THE CODE
 
@@ -18,4 +28,18 @@ The following command will execute the TPC-H query WQY with the stream sampler.:
 
 bin/joinsampling "SELECT * from QY WEIGHTED BY ((e1*(1-d1))*t1*(e2*(1-d2))*t2) LIMIT 1000000 /* db='tpch.json', seed='test123', scalefactor=1 */"
 
-To activate the foreign-key economic sampler one adds the parameter "fk=10" in the SQL comment. The 10 signifies how much larger of a sample it collects. To activate the many-to-many economic sampler one adds the parameter "hash=1" in the SQL comment. To activate the cyclic economic sampler one adds the parameter "simplify=1" in the SQL comment. To activate the index-based sampler one uses adds parameter "index=1" in the SQL comment. To activate the inversion sampler one uses the parameter "inversion=1". For KS-testing one adds the parameter "ks=1".
+"QY" is here the desired view from the ".json"-database file
+"WEIGHTED BY" is an SQL-like expression followed by the weighting function
+"LIMIT" determines the desired sample size
+"SEED" picks a seed for the sampling process
+"scalefactor=1" chooses the desired scale factor 1 (alternatively 10/100) for TPC-H datasets (ignored for other datasets)
+
+Alternative parameters in the SQL comments:
+
+"fk=10" will activate the foreign-key economic sampler
+"hash=1" will activate the acyclic economic sampler
+"simplify=1" will activate the cyclic economic sampler
+"inversion=1" will active the inversion sampler
+"ks=1" choose to perform a K-S-test on the sample
+"write=output.txt" chooses to write the sample to "output.txt"
+
