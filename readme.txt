@@ -13,9 +13,9 @@ Each "database" and its schema and views of the queries used in the experiments 
 The ".json" files in the main folder reveal how the data should be named and where everything should be placed:
 
 In the folder "data/dblp": citation.csv, paper.csv, author.csv, authored.csv, venue.csv
-In the folder "data/tpch/1X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
-In the folder "data/tpch/10X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
-In the folder "data/tpch/100X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
+In the folder "data/tpch/1X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl,  supplier.tbl, etc
+In the folder "data/tpch/10X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl,  supplier.tbl, etc
+In the folder "data/tpch/100X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl,  supplier.tbl, etc
 In the folder "data/twitter": 1_50x.txt, 2_50x.txt, celebrities_profiles.txt
 
 3.) COMPILE THE CODE
