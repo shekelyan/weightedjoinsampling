@@ -8,11 +8,11 @@ TWITTER: The twitter dataset can be obtained from http://an.kaist.ac.kr/traces/W
 
 2.) MODIFY THE DATABASE FILES
 
-Each "database" and its schema are defined in a database file using JSON. Currently only files are supported as data sources, but ODBC support is essentially already in the code.
+Each "database" and its schema and views of the queries used in the experiments are defined in a database file using JSON. Currently only files are supported as data sources, but ODBC support is essentially already in the code.
 
 The ".json" files in the main folder reveal how the data should be named and where everything should be placed:
 
-In the folder "data/dblp": citation.csv, paper.csv, author.csv, authored.csv
+In the folder "data/dblp": citation.csv, paper.csv, author.csv, authored.csv, venue.csv
 In the folder "data/tpch/1X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
 In the folder "data/tpch/10X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
 In the folder "data/tpch/100X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl, partsupp.tbl, part.tbl, region.tbl, supplier.tbl
@@ -24,7 +24,7 @@ Execute "make joinsampling" from the main directory (where the "Makefile"-file i
 
 4.) EXECUTE THE CODE
 
-The code receives as a parameter a valid MySQL query except the SQL-like keyword WEIGHTED BY. For instance, the following command (executed from same Folder as "Makefile" file) will execute the TPC-H query WQY with the stream sampler.:
+The code receives as a parameter a valid MySQL query except the SQL-like keyword WEIGHTED BY. For instance, the following command (executed from same Folder as "Makefile" file) will execute the TPC-H query WQY with the stream sampler:
 
 bin/joinsampling "SELECT * from QY WEIGHTED BY ((e1*(1-d1))*t1*(e2*(1-d2))*t2) LIMIT 1000000 /* db='tpch.json', seed='test123', scalefactor=1 */"
 
