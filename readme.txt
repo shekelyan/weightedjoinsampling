@@ -6,7 +6,12 @@ TPC-H: The TPC-H benchmark can be downloaded from http://tpc.org and has to be r
 DBLP: How to obtain the DBLP dataset is explained by one of our authors on https://github.com/qingzma/cnd. The raw data can be found on http://arnetminer.org/citation.
 TWITTER: The twitter dataset can be obtained from http://an.kaist.ac.kr/traces/WWW2010.html
 
-2.) MODIFY THE DATABASE FILES
+1.) COMPILE THE CODE
+
+Execute "make joinsampling" from the main directory (where the "Makefile"-file is located)
+This will also create the subfolders for the data.
+
+2.) PREPARE THE DATA
 
 Each "database" and its schema and views of the queries used in the experiments are defined in a database file using JSON. Currently only files are supported as data sources, but ODBC support is essentially already in the code.
 
@@ -17,11 +22,6 @@ In the folder "data/tpch/1X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl
 In the folder "data/tpch/10X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl,  supplier.tbl, etc
 In the folder "data/tpch/100X": lineitem.tbl, customer.tbl, nation.tbl, orders.tbl,  supplier.tbl, etc
 In the folder "data/twitter": 1_50x.txt, 2_50x.txt, celebrities_profiles.txt
-
-3.) COMPILE THE CODE
-
-Create a sub-folder "bin" (where the "Makefile"-file is located)
-Execute "make joinsampling" from the main directory (where the "Makefile"-file is located)
 
 4.) EXECUTE THE CODE
 
