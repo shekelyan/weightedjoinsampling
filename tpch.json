@@ -24,7 +24,7 @@
 			"csvcolumns": 	"s_suppkey, s_name, s_address, s_nationkey, s_phone, s_acctbal, s_comment"
 		},
 		"lineitem":{
-			"csvfile":		"data/tpch/${scalefactor}x/lineitem_skew.tbl",
+			"csvfile":		"data/tpch/${scalefactor}x/lineitem.tbl",
 			"csvheader":	false,
 			"csvdebug": 	false,
 			"csvcomma":		"|",
