@@ -20,6 +20,7 @@ In the folder "data/twitter": 1_50x.txt, 2_50x.txt, celebrities_profiles.txt
 
 3.) COMPILE THE CODE
 
+Create a sub-folder "bin" (where the "Makefile"-file is located)
 Execute "make joinsampling" from the main directory (where the "Makefile"-file is located)
 
 4.) EXECUTE THE CODE
