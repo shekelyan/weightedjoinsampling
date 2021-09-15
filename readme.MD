@@ -12,7 +12,7 @@ This will also create the subfolders for the data.
 ## 3.) DOWNLOAD/PREPARE THE DATA
 
 - TPC-H: The TPC-H benchmark can be downloaded from http://tpc.org and has to be run to generate the csv files.
-- DBLP: How to obtain the DBLP dataset is explained on https://anonymous.4open.science/r/cnd-D375/README.md. The raw data can be found on http://arnetminer.org/citation.
+- DBLP: How to obtain the DBLP dataset is explained on https://anonymous.4open.science/r/cnd-D375. The raw data can be found on http://arnetminer.org/citation.
 - TWITTER: The twitter dataset can be obtained from http://an.kaist.ac.kr/traces/WWW2010.html
 
 Each "database" and its schema and views of the queries used in the experiments are defined in a database file using JSON (tpch.json,dblp.json and twitter.json). Currently only csv-type files are supported as data sources, but ODBC support is essentially already in the code.
