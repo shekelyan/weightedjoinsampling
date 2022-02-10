@@ -1,6 +1,6 @@
 
-#ifndef SHEKELYAN_JOINSAMPLING_LIB
-#define SHEKELYAN_JOINSAMPLING_LIB
+#ifndef HEADER_JOINSAMPLING_LIB
+#define HEADER_JOINSAMPLING_LIB
 
 //#include <approxdata/utils/utils.h>
 //#include <approxdata/external/pq.h>
