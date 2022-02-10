@@ -18,8 +18,8 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef SHEKELYAN_DATA_H
-#define SHEKELYAN_DATA_H
+#ifndef HEADER_DATA_H
+#define HEADER_DATA_H
 
 #include <approxdata/utils/utils.h>
 #include <approxdata/data/PointStream.h>
