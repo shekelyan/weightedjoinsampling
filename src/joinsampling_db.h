@@ -1,6 +1,6 @@
 
-#ifndef SHEKELYAN_JOINSAMPLING_DB
-#define SHEKELYAN_JOINSAMPLING_DB
+#ifndef HEADER_JOINSAMPLING_DB
+#define HEADER_JOINSAMPLING_DB
 
 #include <joinsampling_lib.h>
 
